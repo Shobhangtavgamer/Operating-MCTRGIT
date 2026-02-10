@@ -66,7 +66,7 @@ int main() {
     printf("\nAverage Waiting Time    = %.2f", average_waiting_time);
     printf("\nAverage Turnaround Time = %.2f\n", average_turnaround_time);
 
-    // ✅ Proper Gantt Chart
+    // Proper Gantt Chart
     printf("\nGantt Chart:\n\n ");
     for (int i = 0; i < number_of_process; i++)
         printf("--------");
