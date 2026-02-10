@@ -1,4 +1,4 @@
-// Priority Scheduling in C with Gantt Chart
+// Priority Scheduling in C with Proper Gantt Chart
 #include <stdio.h>
 struct priority_scheduling {
     char process_name;
@@ -8,7 +8,6 @@ struct priority_scheduling {
     int priority;
 };
 int main() {
-
     int number_of_process;
     int total = 0;
     int ASCII_number = 65;
@@ -18,21 +17,20 @@ int main() {
     printf("Enter the total number of Processes: ");
     scanf("%d", &number_of_process);
     struct priority_scheduling process[number_of_process], temp_process;
-    printf("\nPlease Enter the Burst Time and Priority of each process:\n");
+    printf("\nEnter Burst Time and Priority\n");
     for (int i = 0; i < number_of_process; i++) {
-        process[i].process_name = (char) ASCII_number;
-        printf("\nEnter the details of process %c\n", process[i].process_name);
+        process[i].process_name = (char)ASCII_number;
+        printf("\nProcess %c\n", process[i].process_name);
         printf("Burst Time: ");
         scanf("%d", &process[i].burst_time);
         printf("Priority: ");
         scanf("%d", &process[i].priority);
         ASCII_number++;
     }
-
     for (int i = 0; i < number_of_process; i++) {
         position = i;
         for (int j = i + 1; j < number_of_process; j++) {
-            if (process[j].priority > process[position].priority)
+            if (process[j].priority < process[position].priority)
                 position = j;
         }
         temp_process = process[i];
@@ -41,15 +39,17 @@ int main() {
     }
     process[0].waiting_time = 0;
     for (int i = 1; i < number_of_process; i++) {
-        process[i].waiting_time = process[i - 1].waiting_time + process[i - 1].burst_time;
+        process[i].waiting_time =
+            process[i - 1].waiting_time + process[i - 1].burst_time;
         total += process[i].waiting_time;
     }
-    average_waiting_time = (float) total / number_of_process;
+    average_waiting_time = (float)total / number_of_process;
     total = 0;
     printf("\n\nProcess Table:\n");
     printf("------------------------------------------------------------\n");
     printf("Process | Priority | Burst | Waiting | Turnaround\n");
     printf("------------------------------------------------------------\n");
+
     for (int i = 0; i < number_of_process; i++) {
         process[i].turn_around_time =
             process[i].burst_time + process[i].waiting_time;
@@ -62,11 +62,11 @@ int main() {
                process[i].turn_around_time);
     }
     printf("------------------------------------------------------------\n");
-    average_turnaround_time = (float) total / number_of_process;
+    average_turnaround_time = (float)total / number_of_process;
     printf("\nAverage Waiting Time    = %.2f", average_waiting_time);
     printf("\nAverage Turnaround Time = %.2f\n", average_turnaround_time);
 
-    /*GANTT CHART*/
+    // ✅ Proper Gantt Chart
     printf("\nGantt Chart:\n\n ");
     for (int i = 0; i < number_of_process; i++)
         printf("--------");
