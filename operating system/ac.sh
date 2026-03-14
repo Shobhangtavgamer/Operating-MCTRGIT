@@ -1,3 +1,4 @@
+// This script implements an advanced calculator that performs various operations on two numbers.and its features include addition, subtraction, multiplication, division, modulus, power, maximum, minimum, and average. The user can choose to continue using the calculator or exit after each operation. And keep save it in .sh file and run it in terminal(sh filename.sh). 
 #!/bin/bash
 
 while true
