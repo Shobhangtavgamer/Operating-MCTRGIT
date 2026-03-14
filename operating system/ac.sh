@@ -8,7 +8,7 @@ read -p "Enter first number: " num1
 read -p "Enter second number: " num2
 
 echo "Menu"
-echo "1.Addition"
+echo "1.Addition" 
 echo "2.Subtraction"
 echo "3.Multiplication"
 echo "4.Division"
